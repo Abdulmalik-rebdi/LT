@@ -1,0 +1,7 @@
+"0","Titanic %>% "
+"0","  gt(rowname_col = 'gender' , groupname_col ='pclass'	 ) %>% "
+"0","  tab_header("
+"0","    title = md(""Titanic""),"
+"0","    subtitle =md("" British luxury passenger liner that sank on April 14–15, 1912"")  "
+"0","    "
+"0","  ) %>% tab_options(row_group.as_column = TRUE)"
