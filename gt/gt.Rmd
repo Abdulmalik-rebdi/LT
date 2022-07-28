@@ -1,6 +1,6 @@
 ---
 title: "gt package in R"
-date: '2022-07-24'
+
 
 output: 
   html_document:
@@ -32,11 +32,12 @@ Titanic = sample_n(Titanic, 15)
 
 # introduction 
 
-gt is used to let anyone who wants to present a table to present it nicely 
+gt is used to let anyone who wants to present a table to present it nicely .
+
 it let you add title , subtitle , labels to columns , row grouping and color the table as you wish 
 
-# the probelm 
-if you want to present a table in R this the best you can do 
+## the probelm 
+for example if you want to present a table in R  what  you normally do is
 ```{r results='markup'}
    Titanic %>% 
   select(gender,age,name,sibsp,parch,ticket,fare)
@@ -45,11 +46,12 @@ if you want to present a table in R this the best you can do
 
 ```
 
-but with the gt package there much more you can do
+but with the gt package there are much more to do .
 
 # gt()
 
-the fist method to this method is gt() gt let you just presnt it with no addition to the table 
+<p> the fist method and the main method in the package is gt() <br> 
+gt let you  present a table in nicer way  </p>
 we can see here how it look 
 ```{r results='markup'}
 Titanic %>% 
@@ -57,7 +59,7 @@ Titanic %>%
     
   
 ```
-we notice that there is a slight difference but we're can't yet say **beautiful** table
+we notice that there is a slight difference but we can't yet say it's **beautiful** table
 
 # tab header
 
@@ -90,7 +92,7 @@ Titanic %>%
 ```
 ## md  
 
-md()  let you format the text as markdiwn such as making a word bold or inserting breakline as shown 
+md()  let you format the text as markdown such as making a word bold or inserting break-line 
 
 ```{r results='markup'}
 Titanic %>% 
@@ -102,8 +104,8 @@ Titanic %>%
   )
 ```
 ## grouping
-if we care about a column and want to present it as main information we can use  groupname_col 
-such as in this example care about the class of passenger and want to look exactly the affect of the class 
+if we care about a column and want to present it as main column in our table we can use  groupname_col 
+such as in this example we care about the class of passengers and want it to look exactly the affect of the class in our table the method will group the column depending on there class
 
 ```{r results='markup' }
 
@@ -117,7 +119,7 @@ Titanic %>%
 ```
 
 ## row name column
-same as the column we can make the same thing to rows if we car about column that will add important insight to our presentation for example the gender 
+same as the column we can make the same thing to rows if we care about one column that will add important insight to our presentation for example the gender 
 
 ```{r results='markup'}
 
@@ -131,7 +133,7 @@ Titanic %>%
 ```
 it will show it in the begging  and will add a separation line after it 
 
-but it doesn't fit right we can change the group column to make it inline with the rowname by introducing `tap_options()`
+but it doesn't fit right there is lots of spaces we can change the group column to make it inline with the rowname by introducing `tap_options()`
 ```{r results='markup'}
 Titanic %>% 
   gt(rowname_col = 'gender' , groupname_col ='pclass'	 ) %>% 
@@ -141,17 +143,17 @@ Titanic %>%
     
   ) %>% tab_options(row_group.as_column = TRUE)
 ```
-now it fit without the extra space
+now it fit without that extra space
 
 
 
 # fmt
-format will make custom formatting to a column there are many formatting such as
+format will make custom formatting to a column  there are many formatting such as formatting the crunchy or date or nulls and many other 
 
 
 ## formating currncy
 
-if you see the `fare` column you can notice that there are  no currency added to it we can esily added by using the fmt_currency()
+if you see the `fare` column you can notice that there are  no currency added to it we can easily added by using the fmt_currency()
 ```{r results='markup'}
 Titanic %>% 
   gt(rowname_col = 'gender' , groupname_col ='pclass'	 ) %>% 
@@ -166,11 +168,11 @@ Titanic %>%
 ```
 you notice that not only it added the curnccy it also change the formate to two decimal places we can change it or remove the decimal places by adding `fmt_currency(columns = fare , currency = 'pound' , decimals	= 0)` this will make the decimal places zero 
 
-notice: the default paramter for the decimals is 2   as shown in the table
+notice: the default parameter for the decimals is 2   as shown in the table
 
 ## nulls
 
-it wont be good to present your presentation with NA written in your table fmt_missing() will provide a better approach and convert NA to dashs
+it wont be that good to present your presentation with NAs written in your table fmt_missing() will provide a better approach and convert NA into dashs
 
 ```{r results='markup'}
 Titanic %>% 
@@ -188,10 +190,9 @@ Titanic %>%
 
 ## date
 
-fmt_date()  will let you format the date you have to any other type unfourtintly our data doesn't have any date but, 
+fmt_date()  will let you format the date you have to  other type unfourtintly our data doesn't have any date data but, 
 
-if the input date is 2000-02-29 you can choose any of the type here 
-it will convert to any of these 14 format 
+if the input date was 2000-02-29 you can choose format it to any of these 14 format 
 
 1-iso: 2000-02-29
 
@@ -221,14 +222,14 @@ it will convert to any of these 14 format
 
 14 - y.mn.day: 0/02/29
 
-example to use is it 
+example to write is : 
 
 `fmt_date(data, columns, date_style = 2)`
 
 notice that it must be in the ISO 8601 form of  ⁠YYYY-MM-DD HH:MM:SS⁠ or YYYY-MM-DD
 
 # moving , hiding and grouping columns
-
+there are many thing we can do in gt package when it come to columns we can hide , move or merge columns in wasy way 
 
 ## hiding  columns
 
@@ -268,7 +269,7 @@ Titanic %>%
 ```
 
 ## grouping 
-grouping let you choose any columns and compine them into one column
+merge let you choose any columns and combine them into one column
 
 ```{r  results='markup'}
 Titanic %>% 
@@ -401,10 +402,11 @@ Titanic %>%
     colors = scales::col_numeric(
       palette = c("green", "red"),
       domain = c(7, 250)
-    ))  %>%  tab_source_note(
+    ))  %>%  
+  tab_source_note(
     source_note = md(
       " sourses  and for more inforomation about gt : [youtube video](https://www.youtube.com/watch?v=aPRVzk9pvno&t=1650s) , [article](https://gt.rstudio.com/articles/case-study-gtcars.html#hiding-and-moving-some-columns) and [article2 ](https://gt.rstudio.com/articles/case-study-gtcars.html)")
-  )
+  ) #with help of md method
 ```
 ## footnote
 
@@ -444,3 +446,7 @@ Titanic %>%
 
 ```
 
+# END
+in the end there more to do with gt such as adjusting width of the column , changing the font of the table content or ordering the rows and changing the color of the background with a very small steps , above i provided links if you want to go deeper 
+
+**thank you** for your listening 
